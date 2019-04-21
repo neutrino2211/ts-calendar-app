@@ -31,7 +31,6 @@ export class Component extends BaseComponent {
     }
 
     childrenAvailableCallback(){
-        console.log(this.getAttribute('$ref'))
         if(this.getAttribute('$ref')){
             registerRef(this.getAttribute('$ref'), this.component);
         }

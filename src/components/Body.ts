@@ -33,7 +33,6 @@ export class Body extends StatefulComponent {
             start_day = 6;
         }
         let day = 0;
-        console.log(start_day)
         const [from, to] = this.header.gradient(this.header.state.month);
         return `
         <ul class="days"> 
@@ -52,20 +51,11 @@ export class Body extends StatefulComponent {
                         } else {
                             li.classList.add('hover');
                         }
-                        // html += `<li ${
-                        //     this.header.state.date.getDate()-1 == day && 
-                        //     this.header.state.date.getMonth() == this.header.state.month &&
-                        //     this.header.state.year == this.header.state.date.getFullYear()
-                        //     ? 'class="active" style="background: linear-gradient(to bottom right,'+from+', '+to+');"'
-                        //     : '' 
-                        // }>${
-                        //     day+1-start_day
-                        // }</li>`;
-                        const day_number = (day+start_day-1);
+
+                        const day_number = (day-start_day+1);
                         if(day_number > 0){
                             li.textContent = day_number.toString()
                         }
-                        // console.log(li)
                     }
                     html += li.outerHTML;
                     day++;
