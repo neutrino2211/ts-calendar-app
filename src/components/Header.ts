@@ -16,6 +16,11 @@ export class Header extends StatefulComponent {
         return ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'][this.state.month%12]
     }
 
+    gradient(index: number): [string,string] {
+        const gradients = ['#1acc9c','#1abc9c','#1a9c9c','#1a7c9c','#1a7090','#1a6090','#1a5090','#1a6090','#1a7090','#1a7c9c','#1a9c9c','#1abc9c','#1acc9c'];
+        return [gradients[index],gradients[index+1]];
+    }
+
     onLoad(){
         this.root.querySelector('.next').addEventListener('click',()=>{
             if(this.state.month === 11){
@@ -41,8 +46,9 @@ export class Header extends StatefulComponent {
     }
 
     render(state: State){
+        const [from, to] = this.gradient(state.month);
         return `
-        <div class="month"> 
+        <div class="month" style="background: linear-gradient(to bottom right, ${from}, ${to});"> 
             <ul>
                 <li class="prev">&#10094;</li>
                 <li class="next">&#10095;</li>

@@ -6,10 +6,10 @@ body {font-family: Verdana, sans-serif;}
     padding-bottom: 75px;
     padding-top: 75px;
   width: 100%;
-  background: linear-gradient(to bottom right, #1abc9c, #169c9c);
   text-align: center;
   border-radius: 14px;
   margin-bottom: 12px;
+  transition: background 1s;
 }
 
 /* Month list */
@@ -50,7 +50,7 @@ body {font-family: Verdana, sans-serif;}
 
 .weekdays li {
   display: inline-block;
-  width: 13.6%;
+  width: 12%;
   color: #666;
   text-align: center;
 }
@@ -67,7 +67,6 @@ body {font-family: Verdana, sans-serif;}
 /* Highlight the "current" day */
 .days li.active {
     padding: 5px;
-    background: #1abc9c;
     color: white !important
 }
 
