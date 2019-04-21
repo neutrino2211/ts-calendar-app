@@ -1,0 +1,34 @@
+{
+  "name": "ts-calendar-app",
+  "version": "1.0.0",
+  "description": "A calendar app made with typescript",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir dist/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neutrino2211/ts-calendar-app.git"
+  },
+  "keywords": [],
+  "author": {
+    "name": "Tsowa Mainasara Al-amin"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neutrino2211/ts-calendar-app/issues"
+  },
+  "homepage": "https://github.com/neutrino2211/ts-calendar-app#readme",
+  "devDependencies": {
+    "typescript": "^3.4.4"
+  },
+  "readme": "ERROR: No README data found!",
+  "_id": "ts-calendar-app@1.0.0",
+  "dependencies": {
+    "@babel/polyfill": "^7.4.3",
+    "@types/events": "^3.0.0",
+    "events": "^3.0.0",
+    "parcel": "^1.12.3"
+  }
+}
