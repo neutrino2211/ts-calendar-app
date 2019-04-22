@@ -34,7 +34,7 @@ export class StatefulComponent extends Component {
         return getRef(name);
     }
 
-    peerState(component: StatefulComponent){
+    peerComponent(component: StatefulComponent){
         component.on('render',()=>{
             this.emit('render');
         })

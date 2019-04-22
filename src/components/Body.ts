@@ -8,7 +8,7 @@ export class Body extends StatefulComponent {
     constructor(){
         super({});
         this.header = <Header>this.$ref('calendar-header');
-        this.peerState(this.header);
+        this.peerComponent(this.header);
     }
 
     onLoad(){
