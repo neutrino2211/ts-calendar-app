@@ -8,6 +8,7 @@ export class Widget extends Component {
     constructor(state: State, transformers?: StateTransformers){
         super();
         this.component = this;
+        this.state = state;
         this.transformers = transformers;
         transformers && this.transformState(transformers, state);
     }

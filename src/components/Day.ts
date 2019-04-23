@@ -26,10 +26,6 @@ export class Day extends StatelessWidget {
         }
     }
 
-    onDismount(){
-        console.log(`Dismounted ${this.header.state.year}/${this.header.state.month}/${this.state.day}`);
-    }
-
     render(state: State){
         return `<li>${state.day || ''}</li>`
     }
