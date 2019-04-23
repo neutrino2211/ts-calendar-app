@@ -1,34 +1,15 @@
-import { BaseComponent } from "./basecomponent";
+import { BaseComponent } from "./BaseComponent";
 
-import { StatefulComponent } from "./statefulcomponent";
-
-import { State, registerRef } from "../utils";
+import { registerRef } from "../utils";
+import { Widget } from "./Widget";
 
 export class Component extends BaseComponent {
-    public component: StatefulComponent;
+    public component: Widget;
+
     constructor(){
         super();
     }
 
-    connectedCallback(){
-        this.setup();
-        this.component.root = this;
-        let state: State = {};
-        for(let i=0; i<this.attributes.length; i++){
-            const attr= this.attributes[i];
-            state[attr.name] = attr.value;
-        }
-        let componentState = Object.assign({}, this.component.state)
-        state = Object.assign(componentState, state);
-        this.innerHTML = this.component._render(state);
-        this.component.on('render',(state: State)=>{
-            let componentState = Object.assign({}, this.component.state)
-            state = Object.assign(componentState, state);
-            this.innerHTML = this.component._render(state);
-            this.component.emit('load')
-        })
-        this.component.emit('load')
-    }
 
     childrenAvailableCallback(){
         if(this.getAttribute('$ref')){
@@ -37,6 +18,6 @@ export class Component extends BaseComponent {
     }
 
     disconnectedCallback(){
-
+        this.component.onDismount();
     }
 }

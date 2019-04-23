@@ -1,16 +1,16 @@
 import { Component } from '../component-library/component';
-import { StatefulComponent } from '../component-library/statefulcomponent';
+import { Widget } from '../component-library/Widget';
 
 const global_refs = {};
 
 export type State = any;
 export type StateTransformers = any;
 
-export function registerRef(ref: string, component: StatefulComponent){
+export function registerRef(ref: string, component: Widget){
     global_refs[ref] = component;
 }
 
-export function getRef(ref: string): StatefulComponent{
+export function getRef(ref: string): Widget{
     return global_refs[ref];
 }
 

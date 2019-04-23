@@ -1,9 +1,10 @@
-import { StatefulComponent } from "../component-library/statefulcomponent";
+import { StatefulWidget } from "../component-library/StatefulWidget";
 
 import { State } from "../utils";
 import { Header } from "./Header";
+import { Day } from "./Day";
 
-export class Body extends StatefulComponent {
+export class Body extends StatefulWidget {
     private header: Header;
     constructor(){
         super({});
@@ -11,7 +12,7 @@ export class Body extends StatefulComponent {
         this.peerComponent(this.header);
     }
 
-    onLoad(){
+    onMount(){
         this.root.querySelectorAll('.hover').forEach((li: HTMLLIElement)=>{
             li.addEventListener('mouseover',()=>{
                 const [from, to] = this.header.gradient(this.header.state.month);
@@ -33,31 +34,19 @@ export class Body extends StatefulComponent {
             start_day = 6;
         }
         let day = 0;
-        const [from, to] = this.header.gradient(this.header.state.month);
         return `
         <ul class="days"> 
             ${(()=>{
                 let html = ''
                 while(day < days+start_day){
-                    const li = document.createElement('li');
+                    const dayWidget = <Day>document.createElement('calendar-day');
                     if(day >= start_day){
-                        if(
-                            this.header.state.date.getDate()-1 == day && 
-                            this.header.state.date.getMonth() == this.header.state.month &&
-                            this.header.state.year == this.header.state.date.getFullYear()
-                        ) {
-                            li.setAttribute('class','active');
-                            li.setAttribute('style','background: linear-gradient(to bottom right,'+from+', '+to+');')
-                        } else {
-                            li.classList.add('hover');
-                        }
-
                         const day_number = (day-start_day+1);
                         if(day_number > 0){
-                            li.textContent = day_number.toString()
+                            dayWidget.setAttribute('day',day_number.toString())
                         }
                     }
-                    html += li.outerHTML;
+                    html += dayWidget.outerHTML;
                     day++;
                 }
                 return html;

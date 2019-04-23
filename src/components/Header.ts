@@ -1,8 +1,8 @@
-import { StatefulComponent } from "../component-library/statefulcomponent";
+import { StatefulWidget } from "../component-library/StatefulWidget";
 
 import { State } from "../utils";
 
-export class Header extends StatefulComponent {
+export class Header extends StatefulWidget {
     constructor(){
         const date = new Date();
         super({
@@ -21,7 +21,7 @@ export class Header extends StatefulComponent {
         return [gradients[index],gradients[index+1]];
     }
 
-    onLoad(){
+    onMount(){
         this.root.querySelector('.next').addEventListener('click',()=>{
             if(this.state.month === 11){
                 this.state.month = -1;

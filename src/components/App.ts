@@ -1,9 +1,9 @@
-import { StatefulComponent } from "../component-library/statefulcomponent";
+import { StatefulWidget } from "../component-library/StatefulWidget";
 import { State } from "../utils";
 
 let timer: number;
 
-export class App extends StatefulComponent {
+export class App extends StatefulWidget {
     constructor(){
         super({
             width: window.innerWidth,
@@ -18,7 +18,7 @@ export class App extends StatefulComponent {
         };
     }
 
-    onLoad(){
+    onMount(){
         window.addEventListener('resize',this.debounce((ev)=>{
             const target = <Window>ev.target;
             this.setState({
