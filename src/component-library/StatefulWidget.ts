@@ -20,14 +20,18 @@ export class StatefulWidget extends Widget {
         }
         let componentState = Object.assign({}, this.state)
         state = Object.assign(componentState, state);
+        this.beforeRender()
         this.innerHTML = this._render(state);
         this.on('render',(state: State)=>{
             let componentState = Object.assign({}, this.state)
             state = Object.assign(componentState, state);
+            this.beforeRender()
             this.innerHTML = this._render(state);
             this.emit('load')
+            this.afterRender()
         })
         this.emit('load')
+        this.afterRender()
     }
 
     get emitter(){
